@@ -743,6 +743,22 @@ void MatCreuse::Charger(fstream& fichier, int nbl, int nbc)
     }
 }
 
+MatCreuse& operator+(const double& x, MatCreuse& MC)
+{
+	return MC+x;
+}
+
+MatCreuse& operator-(const double& x, MatCreuse& MC)
+{
+	double mul=-1.0;
+	return (mul*MC)+x;
+}
+
+MatCreuse& operator*(const double& x, MatCreuse& MC)
+{
+	return MC*x;
+}
+
 /*void MatCreuse::Sauvegarde(int nbvaleurs)
 {
     string chemin;
