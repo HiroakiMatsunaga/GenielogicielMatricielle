@@ -1,3 +1,12 @@
+/**
+ * \file          MatCreuse.cpp
+ * \author      GELOCRRG
+ * \version   1.0
+ * \date       20 mai 2015
+ * \brief       Gère l'utilisation des matrices creuses.
+ * \details    Cette classe
+ */
+
 #include <iostream>
 #include <cmath>
 #include "MatCreuse.h"
@@ -8,6 +17,15 @@ using namespace std;
 
 /*_______________________________________ CONSTRUCTION _____________________________________*/
 
+
+/**
+ * \brief       "Ce que la fonction fait"
+ * \details    "Comment elle le fait"
+ * \param    "Nom du paramètre"  "Utilité"
+ * \param    "De même pour chaque paramètre de la fonction"
+ * \return    "Ce qui est retourné"
+ */
+ 
 CaseCreuse* Nb_C(double valeur, int numligne, int numcolonne)
 {
     CaseCreuse* cr = new CaseCreuse;
@@ -20,6 +38,14 @@ CaseCreuse* Nb_C(double valeur, int numligne, int numcolonne)
     
     return cr;
 }
+
+/**
+ * \brief       "Ce que la fonction fait"
+ * \details    "Comment elle le fait"
+ * \param    "Nom du paramètre"  "Utilité"
+ * \param    "De même pour chaque paramètre de la fonction"
+ * \return    "Ce qui est retourné"
+ */
 
 void MatCreuse::NM(int tailleligne, int taillecolonne)
 {
