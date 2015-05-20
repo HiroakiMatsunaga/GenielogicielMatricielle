@@ -40,10 +40,17 @@ class MatCreuse
     friend MatCreuse& operator+(MatCreuse&, MatCreuse&);
     friend MatCreuse& operator-(MatCreuse&, MatCreuse&);
     friend MatCreuse& operator*(MatCreuse&, MatCreuse&);
+    
+    
     friend MatCreuse& operator+(MatCreuse&, double &x);
     friend MatCreuse& operator-(MatCreuse&, double &x);
     friend MatCreuse& operator*(MatCreuse&, double &x);
     friend MatCreuse& operator/(MatCreuse&, double &x);
+    
+    friend MatCreuse& operator+(const double&, MatCreuse&); //DONE
+    friend MatCreuse& operator-(const double&, MatCreuse&); //DONE
+    friend MatCreuse& operator*(const double&, MatCreuse&); //DONE
+
     MatCreuse& Transpose();
     void Charger(std::fstream&, int, int);
     void Sauvegarde(int);
