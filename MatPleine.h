@@ -32,6 +32,10 @@ public:
     friend MatPleine& operator-(MatPleine&,const int&);
     friend MatPleine& operator*(MatPleine&,const int&);
     friend MatPleine& operator/(MatPleine&, const int&);
+    
+    friend MatPleine& operator+(const double& x, MatPleine& MC);
+	friend MatPleine& operator-(const double& x, MatPleine& MC);
+	friend MatPleine& operator*(const double& x, MatPleine& MC);
 
 
     void Sauvegarde();
