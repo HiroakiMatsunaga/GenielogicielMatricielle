@@ -262,6 +262,24 @@ MatPleine& MatPleine::operator=(MatCreuse& MC)
 	return *this;
 }
 
+
+MatPleine& operator+(const double& x, MatPleine& MC)
+{
+	return MC+x;
+}
+
+MatPleine& operator-(const double& x, MatPleine& MC)
+{
+	return MC-x;
+}
+
+MatPleine& operator*(const double& x, MatPleine& MC)
+{
+	return MC*x;
+}
+
+
+
 //_______________FIN OPERATEURS________________
 
 void MatPleine::Sauvegarde()
