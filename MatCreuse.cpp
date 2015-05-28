@@ -4,7 +4,7 @@
  * \version   1.0
  * \date       20 mai 2015
  * \brief       Gère l'utilisation des matrices creuses.
- * \details    Cette classe s'occupe de toutes les manipulations à faire sur les matrices creuses
+ * \details    Cette classe
  */
 
 #include <iostream>
@@ -632,7 +632,7 @@ MatCreuse& MatCreuse::Transpose()
 }
 
 
-MatCreuse& operator+(MatCreuse& MC1, double &x)
+MatCreuse& operator+(MatCreuse& MC1, double& x)
 {
 
     MatCreuse* M_temp= new MatCreuse(MC1.nb_l,MC1.nb_c);
@@ -654,7 +654,7 @@ MatCreuse& operator+(MatCreuse& MC1, double &x)
     return *M_temp;
 }
 
-MatCreuse& operator-(MatCreuse& MC1, double &x)
+MatCreuse& operator-(MatCreuse& MC1, double& x)
 {
 
     MatCreuse* M_temp= new MatCreuse(MC1.nb_l,MC1.nb_c);
@@ -676,7 +676,7 @@ MatCreuse& operator-(MatCreuse& MC1, double &x)
     return *M_temp;
 }
 
-MatCreuse& operator*(MatCreuse& MC1, double &x)
+MatCreuse& operator*(MatCreuse& MC1, double& x)
 {
 
     MatCreuse* M_temp= new MatCreuse(MC1.nb_l,MC1.nb_c);
@@ -698,7 +698,7 @@ MatCreuse& operator*(MatCreuse& MC1, double &x)
     return *M_temp;
 }
 
-MatCreuse& operator/(MatCreuse& MC1, double &x)
+MatCreuse& operator/(MatCreuse& MC1, double& x)
 {
 
     MatCreuse* M_temp= new MatCreuse(MC1.nb_l,MC1.nb_c);
@@ -743,23 +743,23 @@ void MatCreuse::Charger(fstream& fichier, int nbl, int nbc)
     }
 }
 
-MatCreuse& operator+(const double& x, MatCreuse& MC)
+MatCreuse& operator+(double& x, MatCreuse& MC)
 {
-	return MC+x;
+    return MC+x;
 }
 
-MatCreuse& operator-(const double& x, MatCreuse& MC)
+MatCreuse& operator-(double& x, MatCreuse& MC)
 {
-	double mul=-1.0;
-	return (mul*MC)+x;
+    double mul=-1.0;
+    return (mul*MC)+x;
 }
 
-MatCreuse& operator*(const double& x, MatCreuse& MC)
+MatCreuse& operator*(double& x, MatCreuse& MC)
 {
-	return MC*x;
+    return MC*x;
 }
 
-/*void MatCreuse::Sauvegarde(int nbvaleurs)
+void MatCreuse::Sauvegarde(int nbvaleurs)
 {
     string chemin;
     string nomfichier;
@@ -768,14 +768,17 @@ MatCreuse& operator*(const double& x, MatCreuse& MC)
     chemin="./sauvegardes/"+nomfichier;
     fstream fichier;
     fichier.open(chemin.c_str(),ios::out | ios::trunc);
+    
     fichier<<nb_l<<endl<<nb_c<<endl<<nbvaleurs<<endl;
+
     for (int i=0; i<nb_l; i++)
     {
         for(int j=0;j<nb_c;j++)
         {
-            fichier<<i<<"\t"<<j<<"\t"<<<<endl;
+            if(Valeur(i,j)!=0)
+                fichier<<i<<"\t"<<j<<"\t"<<Valeur(i,j)<<endl;
         }
     }
     fichier.close();
     cout<<"fin"<<endl;
-}*/
+}
