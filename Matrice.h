@@ -128,6 +128,13 @@ public:
 	Matrice& operator/(double& x);
 	
 	/**
+     	*  \brief Transposé d'une matrice
+	*
+     	*  Effectue la transposé d'une matrice.
+     	*/
+	Matrice& Transpose();
+	
+	/**
      	*  \brief Charger un fichier
      	*
      	*  Chargement du fichier dont le nom est passé en argument.
