@@ -8,13 +8,13 @@ class MatCreuse;
 
 class MatPleine
 {
+public:
     int nb_l;
     int nb_c;
     double ** tableau;
     friend class Matrice;
     friend class MatCreuse;
 
-public:
     MatPleine(int,int);
     ~MatPleine();
     void Destruction();
@@ -28,18 +28,17 @@ public:
     friend MatPleine& operator-(MatPleine&,MatPleine&);
     friend MatPleine& operator*(MatPleine&,MatPleine&);
 
-    friend MatPleine& operator+(MatPleine&,const double&);
-    friend MatPleine& operator-(MatPleine&,const double&);
-    friend MatPleine& operator*(MatPleine&,const double&);
-    friend MatPleine& operator/(MatPleine&, const double&);
+    friend MatPleine& operator+(MatPleine&, double&);
+    friend MatPleine& operator-(MatPleine&, double&);
+    friend MatPleine& operator*(MatPleine&, double&);
+    friend MatPleine& operator/(MatPleine&,  double&);
     
-    friend MatPleine& operator+(const double& x, MatPleine& MC);
-    friend MatPleine& operator-(const double& x, MatPleine& MC);
-    friend MatPleine& operator*(const double& x, MatPleine& MC);
+    friend MatPleine& operator+( double& x, MatPleine& MC);
+    friend MatPleine& operator-( double& x, MatPleine& MC);
+    friend MatPleine& operator*( double& x, MatPleine& MC);
 
     friend MatPleine& operator + (MatPleine&, MatCreuse&);
     friend MatPleine& operator + (MatCreuse&, MatPleine&);
-    friend MatPleine& operator - (MatCreuse&, MatPleine&);
     friend MatPleine& operator - (MatCreuse&, MatPleine&);
     friend MatPleine& operator * (MatPleine&, MatCreuse&);
     friend MatPleine& operator * (MatCreuse&, MatPleine&);
