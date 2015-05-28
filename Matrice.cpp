@@ -15,12 +15,29 @@
 #include "MatPleine.h"
 using namespace std;
 
+/**
+* \brief Initialise la matrice.
+* \details Mise à 0 des paramètres.
+* \param nb_l Taille de la matrice.
+* \param nb_c Taille de la matrice.
+* \param nb_val Le nombre de valeur non nulle.
+*/
+
 Matrice::Matrice()
 {
     nb_l=0;
     nb_c=0;
     nb_val=0;
 }
+
+/**
+* \brief Fixe la taille de la matrice et la remplit.
+* \details Passage en argument de la dimension de la matrice et appelle de la fonction matpleine pour la remplir.
+* \param nbl Taille de la matrice.
+* \param nbc Taille de la matrice.
+* \param plein Booléen indiquant si la matrice est pleine ou creuse.
+* \param matPleine issu de la classe MatPleine.
+*/
 
 Matrice::Matrice(int nbl, int nbc)
 {
@@ -45,6 +62,12 @@ Matrice::Matrice(int nbl, int nbc)
 
 }
 
+/**
+* \brief Crée la matrice dans les deux autres classes.
+* \details La matrice est créée dans les deux autres classes pour être manipulé ensuite.
+* \param matCreuse issu de la classe MatCreuse.
+*/
+
 void Matrice::NM(int nbl, int nbc)
 {
     if (nbl>0 && nbc>0)
@@ -58,6 +81,11 @@ void Matrice::NM(int nbl, int nbc)
     matCreuse=new MatCreuse(nb_l, nb_c);
 }
 
+/**
+* \brief Destructeur de la Matrice.
+* \details Détruit la matrice pleine ou creuse selon si elle est pleine ou creuse.
+*/
+
 Matrice::~Matrice()
 {
 	if(plein)
@@ -65,6 +93,11 @@ Matrice::~Matrice()
 	else
 		matCreuse->Destruction();
 }
+
+/**
+* \brief Convertit la matrice de pleine à creuse ou de creuse à pleine.
+* \details Si la matrice est pleine, la convertit en matrice creuse et détruit la matrice pleine et inversement.
+*/
 
 void Matrice::Convertir()
 {
@@ -85,7 +118,10 @@ void Matrice::Convertir()
 	}
 }
 
-
+/**
+* \brief Appelle la fonction Afficher de MatPleine ou MatCreuse.
+* \details Si la fonction est pleine, appelle la fonction Afficher de MatPleine et inversement.
+*/
 
 void Matrice::Afficher()
 {
@@ -98,6 +134,12 @@ void Matrice::Afficher()
         matCreuse->Afficher();
     }
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer l'égalité.
+* \details Appelle l'opérateur = correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine.
+*/
 
 Matrice& Matrice::operator=(Matrice& A)
 {
@@ -124,6 +166,15 @@ Matrice& Matrice::operator=(Matrice& A)
     plein=A.plein;
     return* this;
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la somme.
+* \details Appelle l'opérateur + correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
 
 Matrice& Matrice::operator+(Matrice& A)
 {
@@ -153,6 +204,15 @@ Matrice& Matrice::operator+(Matrice& A)
     }
     return *M_temp;
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la somme.
+* \details Appelle l'opérateur + correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
 
 Matrice& Matrice::operator-(Matrice& A)
 {
