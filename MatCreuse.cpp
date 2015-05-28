@@ -4,7 +4,7 @@
  * \version   1.0
  * \date       20 mai 2015
  * \brief       Gère l'utilisation des matrices creuses.
- * \details    Cette classe
+ * \details    Cette classe s'occupe de toutes les manipulations à faire sur les matrices creuses
  */
 
 #include <iostream>
