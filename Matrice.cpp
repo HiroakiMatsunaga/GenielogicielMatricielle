@@ -139,6 +139,7 @@ void Matrice::Afficher()
 * \brief Appelle l'opérateur nécessaire pour effectuer l'égalité.
 * \details Appelle l'opérateur = correspondant à deux matrices pleines, deux matrices creuses,
 * \	   une pleine et une creuse ou une creuse et une pleine.
+* \return La matrice modifiée par l'égalité.
 */
 
 Matrice& Matrice::operator=(Matrice& A)
