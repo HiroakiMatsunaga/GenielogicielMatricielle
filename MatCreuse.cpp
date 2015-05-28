@@ -618,13 +618,13 @@ MatCreuse& operator*(MatCreuse& MC1, MatCreuse& MC2)
 
 MatCreuse& MatCreuse::Transpose()
 {
-    MatCreuse* M_temp=new MatCreuse(nb_l, nb_c);
+    MatCreuse* M_temp=new MatCreuse(nb_c, nb_l);
 
     for (int i = 0; i < nb_l; ++i)
     {
         for (int j = 0; j < nb_c; ++j)
         {
-            M_temp->Insertion(i,j,Valeur(i,j));
+            M_temp->Insertion(j,i,Valeur(i,j));
         }
     }
 
