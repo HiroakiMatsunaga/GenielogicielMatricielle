@@ -1,3 +1,13 @@
+/**
+* \file Matrice.cpp
+* \author GELOCRRG
+* \version 1.0
+* \date 28 mai 2015
+* \brief Gère l'aiguillage de la matrice vers matpleine ou matcreuse.
+* \details Cette classe appelle, en fonction de la matrice utilisée, la classe matpleine ou matcreuse
+* 	   pour effectuer les manipulations demandées sur cette matrice.
+*/
+
 #include <iostream>
 #include <fstream>
 #include "Matrice.h"
@@ -5,12 +15,29 @@
 #include "MatPleine.h"
 using namespace std;
 
+/**
+* \brief Initialise la matrice.
+* \details Mise à 0 des paramètres.
+* \param nb_l Taille de la matrice.
+* \param nb_c Taille de la matrice.
+* \param nb_val Le nombre de valeur non nulle.
+*/
+
 Matrice::Matrice()
 {
     nb_l=0;
     nb_c=0;
     nb_val=0;
 }
+
+/**
+* \brief Fixe la taille de la matrice et la remplit.
+* \details Passage en argument de la dimension de la matrice et appelle de la fonction matpleine pour la remplir.
+* \param nbl Taille de la matrice.
+* \param nbc Taille de la matrice.
+* \param plein Booléen indiquant si la matrice est pleine ou creuse.
+* \param matPleine issu de la classe MatPleine.
+*/
 
 Matrice::Matrice(int nbl, int nbc)
 {
@@ -35,6 +62,12 @@ Matrice::Matrice(int nbl, int nbc)
 
 }
 
+/**
+* \brief Crée la matrice dans les deux autres classes.
+* \details La matrice est créée dans les deux autres classes pour être manipulé ensuite.
+* \param matCreuse issu de la classe MatCreuse.
+*/
+
 void Matrice::NM(int nbl, int nbc)
 {
     if (nbl>0 && nbc>0)
@@ -48,6 +81,11 @@ void Matrice::NM(int nbl, int nbc)
     matCreuse=new MatCreuse(nb_l, nb_c);
 }
 
+/**
+* \brief Destructeur de la Matrice.
+* \details Détruit la matrice pleine ou creuse selon si elle est pleine ou creuse.
+*/
+
 Matrice::~Matrice()
 {
 	if(plein)
@@ -55,6 +93,11 @@ Matrice::~Matrice()
 	else
 		matCreuse->Destruction();
 }
+
+/**
+* \brief Convertit la matrice de pleine à creuse ou de creuse à pleine.
+* \details Si la matrice est pleine, la convertit en matrice creuse et détruit la matrice pleine et inversement.
+*/
 
 void Matrice::Convertir()
 {
@@ -75,7 +118,10 @@ void Matrice::Convertir()
 	}
 }
 
-
+/**
+* \brief Appelle la fonction Afficher de MatPleine ou MatCreuse.
+* \details Si la fonction est pleine, appelle la fonction Afficher de MatPleine et inversement.
+*/
 
 void Matrice::Afficher()
 {
@@ -88,6 +134,12 @@ void Matrice::Afficher()
         matCreuse->Afficher();
     }
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer l'égalité.
+* \details Appelle l'opérateur = correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine.
+*/
 
 Matrice& Matrice::operator=(Matrice& A)
 {
@@ -117,13 +169,17 @@ Matrice& Matrice::operator=(Matrice& A)
     return* this;
 }
 
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la somme de deux matrices.
+* \details Appelle l'opérateur + correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
 Matrice& Matrice::operator+(Matrice& A)
 {
-
-    /*
-    Manque opérateur matpleine vers matcreuse et matcreuse vers matpleine
-
-    */
     Matrice* M_temp=new Matrice;
     M_temp->NM(A.nb_l, A.nb_c);
     if(plein && A.plein)
@@ -152,6 +208,15 @@ Matrice& Matrice::operator+(Matrice& A)
     }
     return *M_temp;
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la différence entre deux matrices.
+* \details Appelle l'opérateur - correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
 
 Matrice& Matrice::operator-(Matrice& A)
 {
@@ -182,6 +247,15 @@ Matrice& Matrice::operator-(Matrice& A)
     return* M_temp;
 }
 
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer le produit de deux matrices.
+* \details Appelle l'opérateur * correspondant à deux matrices pleines, deux matrices creuses,
+* \	   une pleine et une creuse ou une creuse et une pleine puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
 Matrice& Matrice::operator*(Matrice& A)
 {
     Matrice* M_temp=new Matrice;
@@ -211,6 +285,15 @@ Matrice& Matrice::operator*(Matrice& A)
     return* M_temp;
 }
 
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la somme entre une matrice et un entier.
+* \details Appelle l'opérateur + correspondant à matrice pleine ou creuse puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \param x L'entier utilisé dans l'opération.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
 Matrice& Matrice::operator+(double& x)
 {
     Matrice* M_temp=new Matrice;
@@ -227,6 +310,15 @@ Matrice& Matrice::operator+(double& x)
     }
     return* M_temp;
 }
+
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer la différence entre une matrice et un entier.
+* \details Appelle l'opérateur - correspondant à matrice pleine ou creuse puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \param x L'entier utilisé dans l'opération.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
 
 Matrice& Matrice::operator-(double& x)
 {
@@ -245,6 +337,15 @@ Matrice& Matrice::operator-(double& x)
     return* M_temp;
 }
 
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer le produit entre une matrice et un entier.
+* \details Appelle l'opérateur * correspondant à matrice pleine ou creuse puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \param x L'entier utilisé dans l'opération.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
 Matrice& Matrice::operator*(double& x)
 {
     Matrice* M_temp=new Matrice;
@@ -262,6 +363,15 @@ Matrice& Matrice::operator*(double& x)
     return* M_temp;
 }
 
+/**
+* \brief Appelle l'opérateur nécessaire pour effectuer le quotient entre une matrice et un entier.
+* \details Appelle l'opérateur / correspondant à matrice pleine ou creuse puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \param x L'entier utilisé dans l'opération.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
 Matrice& Matrice::operator/(double& x)
 {
     Matrice* M_temp=new Matrice;
@@ -278,6 +388,15 @@ Matrice& Matrice::operator/(double& x)
     }
     return* M_temp;
 }
+
+/**
+* \brief Appelle la fonction Charger correspondante.
+* \details Si la matrice est pleine, la fonction Charger de matrice pleine est appelée
+* \	   sinon c'est celle de la matrice creuse qui est appelée.
+* \param nom string contenant le nom du fichier
+* \param chemin string contenant le chemin à suivre pour trouver le fichier
+* \param fichier Le fichier à charger.
+*/
 
 void Matrice::Charger(string nom)
 {
