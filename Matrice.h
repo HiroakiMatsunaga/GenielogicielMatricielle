@@ -67,17 +67,71 @@ public:
 	/**
      	*  \brief Crée une nouvelle matrice
      	*
-     	*  .
+     	*  .Crée une matrice creuse et pleine.
      	*/
 	void NM(int,int);
+	
+	/**
+     	*  \brief Opérateur = entre deux matrices
+     	*
+     	*  Etablit l'égalité entre deux matrices.
+     	*/
     Matrice& operator=(Matrice&);
+    
+    /**
+     *  \brief Opérateur + entre deux matrices
+     *
+     *  Effectue la somme entre deux matrices.
+     */
     Matrice& operator+(Matrice&);
+    
+    /**
+     *  \brief Opérateur - entre deux matrices
+     *
+     *  Effectue la différence entre deux matrices.
+     */
     Matrice& operator-(Matrice&);
+    
+    /**
+     *  \brief Opérateur * entre deux matrices
+     *
+     *  Effectue le produit entre deux matrices.
+     */
     Matrice& operator*(Matrice&);
+    
+    /**
+     *  \brief Opérateur + entre une matrice et un entier
+     *
+     *  Effectue la somme entre une matrice et un entier.
+     */
 	Matrice& operator+(double &x);
+	
+	/**
+     	*  \brief Opérateur - entre une matrice et un entier
+     	*
+     	*  Effectue la différence entre une matrice et un entier.
+     	*/
 	Matrice& operator-(double& x);
+	
+	/**
+     	*  \brief Opérateur * entre une matrice et un entier
+     	*
+     	*  Effectue le produit entre une matrice et un entier.
+     	*/
 	Matrice& operator*(double& x);
+	
+	/**
+     	*  \brief Opérateur / entre une matrice et un entier
+	*
+     	*  Effectue le quotient entre une matrice et un entier.
+     	*/
 	Matrice& operator/(double& x);
+	
+	/**
+     	*  \brief Charger un fichier
+     	*
+     	*  Chargement du fichier dont le nom est passé en argument.
+     	*/
 	void Charger(std::string);
 
 };
