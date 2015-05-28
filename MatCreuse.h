@@ -1,63 +1,62 @@
-#ifndef MatCreuse_H
-#define MatCreuse_H
+#ifndef ___MATPLEINE_H___
+#define ___MATPLEINE_H___
+#include "MatCreuse.h"
 #include <string>
 #include <fstream>
-#include "MatPleine.h"
 
-class MatPleine;
+class MatCreuse;
 
-struct CaseCreuse
-{
-double val;
-int ilig;
-int icol;
-CaseCreuse * sl;
-CaseCreuse * sc;
-friend class MatCreuse;
-};
-
-class MatCreuse
+class MatPleine
 {
     int nb_l;
     int nb_c;
-    CaseCreuse ** Lig;
-    CaseCreuse ** Col;
+    double ** tableau;
     friend class Matrice;
-    friend class MatPleine;
-	public:
+    friend class MatCreuse;
 
-    MatCreuse();
-    MatCreuse(int, int);
-    MatCreuse(const MatCreuse&);
-    ~MatCreuse();
+public:
+    MatPleine(int,int);
+    ~MatPleine();
     void Destruction();
-    void NM(int, int);
+    int Remplissage();
     void Afficher();
-    double Valeur(int,int);
-    void Insertion(int, int, double);
-    MatCreuse& operator=(MatCreuse&);
-    MatCreuse& operator=(MatPleine&);
-    friend MatCreuse& operator+(MatCreuse&, MatCreuse&);
-    friend MatCreuse& operator-(MatCreuse&, MatCreuse&);
-    friend MatCreuse& operator*(MatCreuse&, MatCreuse&);
     
+    MatPleine& operator=(MatPleine&);
+    MatPleine& operator=(MatCreuse&);
     
-    friend MatCreuse& operator+(MatCreuse&, double &x);
-    friend MatCreuse& operator-(MatCreuse&, double &x);
-    friend MatCreuse& operator*(MatCreuse&, double &x);
-    friend MatCreuse& operator/(MatCreuse&, double &x);
-    
-    friend MatCreuse& operator+(const double&, MatCreuse&); //DONE
-    friend MatCreuse& operator-(const double&, MatCreuse&); //DONE
-    friend MatCreuse& operator*(const double&, MatCreuse&); //DONE
+    friend MatPleine& operator+(MatPleine&,MatPleine&);
+    friend MatPleine& operator-(MatPleine&,MatPleine&);
+    friend MatPleine& operator*(MatPleine&,MatPleine&);
 
-    MatCreuse& Transpose();
-    void Charger(std::fstream&, int, int);
-    void Sauvegarde(int);
+    friend MatPleine& operator+(MatPleine&,const double&);
+    friend MatPleine& operator-(MatPleine&,const double&);
+    friend MatPleine& operator*(MatPleine&,const double&);
+    friend MatPleine& operator/(MatPleine&, const double&);
+    
+    friend MatPleine& operator+(const double& x, MatPleine& MC);
+    friend MatPleine& operator-(const double& x, MatPleine& MC);
+    friend MatPleine& operator*(const double& x, MatPleine& MC);
+
+    friend MatPleine& operator + (MatPleine&, MatCreuse&);
+    friend MatPleine& operator + (MatCreuse&, MatPleine&);
+    friend MatPleine& operator - (MatCreuse&, MatPleine&);
+    friend MatPleine& operator - (MatCreuse&, MatPleine&);
+    friend MatPleine& operator * (MatPleine&, MatCreuse&);
+    friend MatPleine& operator * (MatCreuse&, MatPleine&);
+
+
+
+    void Sauvegarde();
+    void Charger(std::fstream&,int,int);
+    int Total_Cases();
+    MatPleine& Generateur_Aleat();
+    MatPleine& Transpose();
 
 };
 
 
 
- 
- #endif
+
+
+
+#endif
