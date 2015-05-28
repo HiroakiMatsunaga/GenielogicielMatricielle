@@ -390,6 +390,28 @@ Matrice& Matrice::operator/(double& x)
 }
 
 /**
+* \brief Appelle la fonction nécessaire pour obtenir la transposé d'une matrice.
+* \details Appelle la fonction Transpose correspondante à matrice pleine ou creuse puis la stocke dans une matrice temporaire
+* \	   qui est retourné à la fin.
+* \param M_temp Matrice temporaire.
+* \return La matrice temporaire contenant le résultat de l'opération est retournée.
+*/
+
+Matrice& Matrice::Transpose()
+{
+	Matrice* M_temp=new Matrice;
+	if(plein)
+	{
+		M_temp->matPleine.Transpose();
+	}
+	else
+	{
+		M_temp->matCreuse.Transpose();
+	}
+	return M_temp;
+}
+
+/**
 * \brief Appelle la fonction Charger correspondante.
 * \details Si la matrice est pleine, la fonction Charger de matrice pleine est appelée
 * \	   sinon c'est celle de la matrice creuse qui est appelée.
