@@ -1,3 +1,12 @@
+/**
+* \file MatPleine.cpp
+* \author GELOCRRG
+* \version 1.0
+* \date 28 mai 2015
+* \brief Gère les matrices pleines.
+* \details Cette classe crée, remplit et effectue les opérations possibles sur les matrices pleines
+*/
+
 #include <iostream>
 #include <stdlib.h> 
 #include <string>
@@ -7,6 +16,14 @@
 #include "MatPleine.h"
 #include "MatCreuse.h"
 using namespace std;
+
+/**
+* \brief Crée la matrice pleine.
+* \details Passage en paramètre de la dimension de la matrice et création d'un tableau.
+* \param nbl Taille de la matrice.
+* \param nbc Taille de la matrice.
+* \param tableau La matrice.
+*/
 
 MatPleine::MatPleine(int nbl, int nbc)
 {
@@ -18,16 +35,33 @@ MatPleine::MatPleine(int nbl, int nbc)
 		tableau[i]=new double[nb_c];
 }
 
+/**
+* \brief Destructeur matrice pleine.
+* \details Appelle la fonction qui détruit la matrice pleine.
+*/
+
 MatPleine::~MatPleine()
 {
 	Destruction();
 }
+
+/**
+* \brief Détruit la matrice pleine.
+* \details Détruit le tableau ligne par ligne.
+*/
 
 void MatPleine::Destruction()
 {
 	for(int i=0; i<nb_l; i++)
 		delete[] tableau[i];
 }
+
+/**
+* \brief Remplit la matrice pleine.
+* \details Entrée des valeurs contenues dans la matrice par l'utilisateur.
+* \param nb_val Compteur du nombre de valeurs non nulles entrées dans la matrice.
+* \return Le nombre de valeurs non nulles de la matrice.
+*/
 
 int MatPleine::Remplissage()
 {
@@ -54,6 +88,12 @@ int MatPleine::Remplissage()
         }
         return nb_val;
 }
+
+/**
+* \brief Affiche la matrice pleine.
+* \details Affiche la matrice proprement.
+*/
+
 void MatPleine::Afficher()
 {
         for(int i=0; i<nb_l; i++)
@@ -69,6 +109,13 @@ void MatPleine::Afficher()
 
 
 //_________________OPERATEURS____________________
+
+/**
+* \brief Opérateur = entre deux matrices pleines.
+* \details Copie une matrice pleine dans une autre.
+* \param m La matrice que l'on copie.
+* \return La copie de la matrice passée en argument.
+*/
 
 MatPleine& MatPleine::operator=(MatPleine& m)
 {
@@ -88,6 +135,15 @@ MatPleine& MatPleine::operator=(MatPleine& m)
 	}
 	return *this;
 }
+
+/**
+* \brief Operateur + entre deux matrices pleines.
+* \details Effectue la somme de deux matrices pleines de même taille.
+* \param MP1 Première matrice de la somme.
+* \param MP2 Deuxième matrice de la somme.
+* \param M_temp Matrice temporaire contenant la somme des deux matrices.
+* \return Le Résultat de la somme contenu dans une matrice temporaire.
+*/
 
 MatPleine& operator + (MatPleine& MP1, MatPleine& MP2)
 {
@@ -116,6 +172,15 @@ MatPleine& operator + (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
+/**
+* \brief Operateur - entre deux matrices pleines.
+* \details Effectue la différence de deux matrices pleines de même taille.
+* \param MP1 Première matrice de la différence.
+* \param MP2 Deuxième matrice de la différence.
+* \param M_temp Matrice temporaire contenant la différence des deux matrices.
+* \return Le Résultat de la différence contenu dans une matrice temporaire.
+*/
+
 MatPleine& operator - (MatPleine& MP1, MatPleine& MP2)
 {
 	MatPleine* M_temp = new MatPleine(MP1.nb_l, MP2.nb_c);
@@ -143,6 +208,14 @@ MatPleine& operator - (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
+/**
+* \brief Operateur * entre deux matrices pleines.
+* \details Effectue le produit de deux matrices pleines de même taille.
+* \param MP1 Première matrice du produit.
+* \param MP2 Deuxième matrice du produit.
+* \param M_temp Matrice temporaire contenant le produit des deux matrices.
+* \return Le Résultat du produit contenu dans une matrice temporaire.
+*/
 
 MatPleine& operator * (MatPleine& MP1, MatPleine& MP2)
 {
@@ -178,6 +251,14 @@ MatPleine& operator * (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
+/**
+* \brief Operateur + entre une matrice pleine et un entier.
+* \details Effectue la somme d'une matrice pleine et d'un entier.
+* \param MP1 Matrice de la somme.
+* \param x Entier de la somme.
+* \param M_temp Matrice temporaire contenant la somme.
+* \return Le Résultat de la somme contenu dans une matrice temporaire.
+*/
 
 MatPleine& operator + (MatPleine& MP1, double& x)
 {
@@ -195,6 +276,15 @@ MatPleine& operator + (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
+/**
+* \brief Operateur - entre une matrice pleine et un entier.
+* \details Effectue la différence d'une matrice pleine et d'un entier.
+* \param MP1 Matrice de la différence.
+* \param x Entier de la différence.
+* \param M_temp Matrice temporaire contenant la différence.
+* \return Le Résultat de la différence contenu dans une matrice temporaire.
+*/
+
 MatPleine& operator - (MatPleine& MP1, double& x)
 {
 	MatPleine* M_temp = new MatPleine(MP1.nb_l, MP1.nb_c);
@@ -210,6 +300,15 @@ MatPleine& operator - (MatPleine& MP1, double& x)
 	
 	return *M_temp;
 }
+
+/**
+* \brief Operateur * entre une matrice pleine et un entier.
+* \details Effectue le produit d'une matrice pleine et d'un entier.
+* \param MP1 Matrice du produit.
+* \param x Entier du produit.
+* \param M_temp Matrice temporaire contenant le produit.
+* \return Le Résultat du produit contenu dans une matrice temporaire.
+*/
 
 MatPleine& operator * (MatPleine& MP1, double& x)
 {
@@ -227,6 +326,15 @@ MatPleine& operator * (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
+/**
+* \brief Operateur / entre une matrice pleine et un entier.
+* \details Effectue le quotient d'une matrice pleine et d'un entier.
+* \param MP1 Matrice du quotient.
+* \param x Entier du quotient.
+* \param M_temp Matrice temporaire contenant le quotient.
+* \return Le Résultat du quotient contenu dans une matrice temporaire.
+*/
+
 MatPleine& operator / (MatPleine& MP1, double& x)
 {
 	MatPleine* M_temp = new MatPleine(MP1.nb_l, MP1.nb_c);
@@ -242,6 +350,13 @@ MatPleine& operator / (MatPleine& MP1, double& x)
 	
 	return *M_temp;
 }
+
+/**
+* \brief Operateur = entre une matrice pleine et une matrice creuse.
+* \details Copie d'une matrice creuse dans une matrice pleine.
+* \param MC Matrice creuse.
+* \return La matrice pleine remplacé par le contenu de la matrice creuse.
+*/
 
 MatPleine& MatPleine::operator=(MatCreuse& MC)
 {
