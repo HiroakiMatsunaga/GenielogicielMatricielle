@@ -1,3 +1,13 @@
+/**
+* \file Matrice.cpp
+* \author GELOCRRG
+* \version 1.0
+* \date 28 mai 2015
+* \brief Gère l'aiguillage de la matrice vers matpleine ou matcreuse.
+* \details Cette classe appelle, en fonction de la matrice utilisée, la classe matpleine ou matcreuse
+* 	   pour effectuer les manipulations demandées sur cette matrice.
+*/
+
 #include <iostream>
 #include <fstream>
 #include "Matrice.h"
@@ -117,11 +127,6 @@ Matrice& Matrice::operator=(Matrice& A)
 
 Matrice& Matrice::operator+(Matrice& A)
 {
-
-    /*
-    Manque opérateur matpleine vers matcreuse et matcreuse vers matpleine
-
-    */
     Matrice* M_temp=new Matrice;
     M_temp->NM(A.nb_l, A.nb_c);
     if(plein && A.plein)
