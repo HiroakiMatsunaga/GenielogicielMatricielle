@@ -321,10 +321,10 @@ void MatCreuse::Insertion(int i, int j, double v)
 /*_______________________________________ OPERATEURS _____________________________________*/
 
 //!
-//! \brief Opérateur = .
-//! \details Création d'une matrice creuse avec les dimensions en arguments
-//! \param tailleligne Nombre de lignes de la matrice creuse.
-//! \param taillecolonne Nombre de colonne de la matrice creuse.
+//! \brief Opérateur = entre deux matrices creuses.
+//! \details Copie une matrice creuse dans une autre matrice creuse.
+//! \param MC Matrice creuse à copier.
+//! \return La copie de MC.
 //!
 
 MatCreuse& MatCreuse::operator=(MatCreuse& MC)
@@ -352,6 +352,13 @@ MatCreuse& MatCreuse::operator=(MatCreuse& MC)
     return *this;
 }
 
+//!
+//! \brief Opérateur = entre une matrice creuse et une matrice pleine.
+//! \details Copie une matrice pleine dans une matrice creuse.
+//! \param MP Matrice pleine à copier.
+//! \return La copie de MP.
+//!
+
 MatCreuse& MatCreuse::operator=(MatPleine& MP)
 {
     NM(MP.nb_l,MP.nb_c);
@@ -367,6 +374,13 @@ MatCreuse& MatCreuse::operator=(MatPleine& MP)
     return *this;
 }
 
+//!
+//! \brief Opérateur + entre deux matrices creuses.
+//! \details Effectue la somme de deux matrices creuses.
+//! \param MC1 Première matrice de la somme.
+//! \param MC2 Deuxième matrice de la somme
+//! \return La somme dans une matrice temporaire.
+//!
 
 MatCreuse& operator+(MatCreuse& MC1, MatCreuse& MC2)
 {
@@ -454,6 +468,14 @@ MatCreuse& operator+(MatCreuse& MC1, MatCreuse& MC2)
     return *M_temp;
 }
 
+
+//!
+//! \brief Opérateur - entre deux matrices creuses.
+//! \details Effectue la différence entre deux matrices creuses.
+//! \param MC1 Première matrice de la différence.
+//! \param MC2 Deuxième matrice de la différence.
+//! \return Retourne le résultat de la différence dans une matrice temporaire.
+//!
 
 MatCreuse& operator-(MatCreuse& MC1, MatCreuse& MC2)
 {
@@ -568,6 +590,14 @@ N N N
 
 */
 
+//!
+//! \brief Opérateur * entre deux matrices creuses.
+//! \details Effectue le produit entre deux matrices creuses.
+//! \param MC1 Première matrice du produit.
+//! \param MC2 Deuxième matrice du produit.
+//! \return Retourne le résultat du produit dans une matrice temporaire.
+//!
+
 MatCreuse& operator*(MatCreuse& MC1, MatCreuse& MC2)
 {
     MatCreuse* M_temp= new MatCreuse(MC1.nb_l,MC2.nb_c);
@@ -664,6 +694,12 @@ MatCreuse& operator*(MatCreuse& MC1, MatCreuse& MC2)
 
 }
 
+//!
+//! \brief Transpose une matrice creuse.
+//! \details Effetue la transposé d'une matrice creuse.
+//! \return Retourne la transposé dans une matrice temporaire.
+//!
+
 MatCreuse& MatCreuse::Transpose()
 {
     MatCreuse* M_temp=new MatCreuse(nb_c, nb_l);
@@ -679,6 +715,13 @@ MatCreuse& MatCreuse::Transpose()
     return *M_temp;
 }
 
+//!
+//! \brief Opérateur + entre une matrice creuse et un entier.
+//! \details Effectue la somme d'une matrice creuse et d'un entier.
+//! \param MC1 Matrice de la somme.
+//! \param x Entier à ajouter à la matrice.
+//! \return Retourne le résultat de la somme dans une matrice temporaire.
+//!
 
 MatCreuse& operator+(MatCreuse& MC1, double& x)
 {
@@ -702,6 +745,14 @@ MatCreuse& operator+(MatCreuse& MC1, double& x)
     return *M_temp;
 }
 
+//!
+//! \brief Opérateur - entre une matrice creuse et un entier.
+//! \details Effectue la différence d'une matrice creuse et d'un entier.
+//! \param MC1 Matrice de la différence.
+//! \param x Entier à soustraire à la matrice.
+//! \return Retourne le résultat de la différence dans une matrice temporaire.
+//!
+
 MatCreuse& operator-(MatCreuse& MC1, double& x)
 {
 
@@ -723,6 +774,14 @@ MatCreuse& operator-(MatCreuse& MC1, double& x)
 
     return *M_temp;
 }
+
+//!
+//! \brief Opérateur * entre une matrice creuse et un entier.
+//! \details Effectue le produit d'une matrice creuse et d'un entier.
+//! \param MC1 Matrice du produit.
+//! \param x Entier à multiplier à la matrice.
+//! \return Retourne le résultat du produit dans une matrice temporaire.
+//!
 
 MatCreuse& operator*(MatCreuse& MC1, double& x)
 {
@@ -746,6 +805,14 @@ MatCreuse& operator*(MatCreuse& MC1, double& x)
     return *M_temp;
 }
 
+//!
+//! \brief Opérateur / entre une matrice creuse et un entier.
+//! \details Effectue le quotient d'une matrice creuse et d'un entier.
+//! \param MC1 Matrice du quotient.
+//! \param x Entier qui divise la matrice.
+//! \return Retourne le résultat du quotient dans une matrice temporaire.
+//!
+
 MatCreuse& operator/(MatCreuse& MC1, double& x)
 {
 
@@ -768,6 +835,10 @@ MatCreuse& operator/(MatCreuse& MC1, double& x)
     return *M_temp;
 }
 
+//!
+//! \brief Charger une matrice creuse.
+//! \details Chargement d'une matrice creuse à partir d'un fichier.
+//!
 
 void MatCreuse::Charger(fstream& fichier, int nbl, int nbc)
 {
@@ -791,10 +862,26 @@ void MatCreuse::Charger(fstream& fichier, int nbl, int nbc)
     }
 }
 
+//!
+//! \brief Opérateur + entre un entier et une matrice creuse.
+//! \details Effectue la somme d'une matrice creuse et d'un entier.
+//! \param MC Matrice de la somme.
+//! \param x Entier à ajouter à la matrice.
+//! \return Retourne le résultat de l'opérateur + entre une matrice creuse et un entier.
+//!
+
 MatCreuse& operator+(double& x, MatCreuse& MC)
 {
     return MC+x;
 }
+
+//!
+//! \brief Opérateur - entre un entier et une matrice creuse.
+//! \details Effectue la somme d'une matrice creuse dont on oppose les valeurs et d'un entier.
+//! \param MC Matrice de la somme.
+//! \param x Entier à ajouter à la matrice.
+//! \return Retourne le résultat de l'opérateur + entre une matrice creuse multipliée par -1 et un entier.
+//!
 
 MatCreuse& operator-(double& x, MatCreuse& MC)
 {
@@ -802,10 +889,25 @@ MatCreuse& operator-(double& x, MatCreuse& MC)
     return (mul*MC)+x;
 }
 
+//!
+//! \brief Opérateur * entre un entier et une matrice creuse.
+//! \details Effectue le produit d'une matrice creuse et d'un entier.
+//! \param MC Matrice du produit.
+//! \param x Entier à multiplier à la matrice.
+//! \return Retourne le résultat de l'opérateur * entre une matrice creuse et un entier.
+//!
+
 MatCreuse& operator*(double& x, MatCreuse& MC)
 {
     return MC*x;
 }
+
+//!
+//! \brief Sauvegarder une matrice creuse.
+//! \details Sauvegarde d'une matrice creuse dans un fichier placé dans le dossier "sauvegardes".
+//! \param nbvaleurs Le nombre de valeurs de la matrice qui est aussi entré dans le fichier
+//!                  pour reconnaître une matrice creuse à la lecture.
+//!
 
 void MatCreuse::Sauvegarde(int nbvaleurs)
 {
