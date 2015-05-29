@@ -1,11 +1,11 @@
-/**
-* \file MatPleine.cpp
-* \author GELOCRRG
-* \version 1.0
-* \date 28 mai 2015
-* \brief Gère les matrices pleines.
-* \details Cette classe crée, remplit et effectue les opérations possibles sur les matrices pleines
-*/
+//!
+//! \file MatPleine.cpp
+//! \author GELOCRRG
+//! \version 1.0
+//! \date 28 mai 2015
+//! \brief Gère les matrices pleines.
+//! \details Cette classe crée, remplit et effectue les opérations possibles sur les matrices pleines
+//!
 
 #include <iostream>
 #include <stdlib.h> 
@@ -17,13 +17,13 @@
 #include "MatCreuse.h"
 using namespace std;
 
-/**
-* \brief Crée la matrice pleine.
-* \details Passage en paramètre de la dimension de la matrice et création d'un tableau.
-* \param nbl Taille de la matrice.
-* \param nbc Taille de la matrice.
-* \param tableau La matrice.
-*/
+//!
+//! \brief Crée la matrice pleine.
+//! \details Passage en paramètre de la dimension de la matrice et création d'un tableau.
+//! \param nbl Taille de la matrice.
+//! \param nbc Taille de la matrice.
+//! \param tableau La matrice.
+//!
 
 MatPleine::MatPleine(int nbl, int nbc)
 {
@@ -35,20 +35,20 @@ MatPleine::MatPleine(int nbl, int nbc)
 		tableau[i]=new double[nb_c];
 }
 
-/**
-* \brief Destructeur matrice pleine.
-* \details Appelle la fonction qui détruit la matrice pleine.
-*/
+//!
+//! \brief Destructeur matrice pleine.
+//! \details Appelle la fonction qui détruit la matrice pleine.
+//!
 
 MatPleine::~MatPleine()
 {
 	Destruction();
 }
 
-/**
-* \brief Détruit la matrice pleine.
-* \details Détruit le tableau ligne par ligne.
-*/
+//!
+//! \brief Détruit la matrice pleine.
+//! \details Détruit le tableau ligne par ligne.
+//!
 
 void MatPleine::Destruction()
 {
@@ -56,12 +56,12 @@ void MatPleine::Destruction()
 		delete[] tableau[i];
 }
 
-/**
-* \brief Remplit la matrice pleine.
-* \details Entrée des valeurs contenues dans la matrice par l'utilisateur.
-* \param nb_val Compteur du nombre de valeurs non nulles entrées dans la matrice.
-* \return Le nombre de valeurs non nulles de la matrice.
-*/
+//!
+//! \brief Remplit la matrice pleine.
+//! \details Entrée des valeurs contenues dans la matrice par l'utilisateur.
+//! \param nb_val Compteur du nombre de valeurs non nulles entrées dans la matrice.
+//! \return Le nombre de valeurs non nulles de la matrice.
+//!
 
 int MatPleine::Remplissage()
 {
@@ -89,10 +89,10 @@ int MatPleine::Remplissage()
         return nb_val;
 }
 
-/**
-* \brief Affiche la matrice pleine.
-* \details Affiche la matrice proprement.
-*/
+//!
+//! \brief Affiche la matrice pleine.
+//! \details Affiche la matrice proprement.
+//!
 
 void MatPleine::Afficher()
 {
@@ -110,12 +110,12 @@ void MatPleine::Afficher()
 
 //_________________OPERATEURS____________________
 
-/**
-* \brief Opérateur = entre deux matrices pleines.
-* \details Copie une matrice pleine dans une autre.
-* \param m La matrice que l'on copie.
-* \return La copie de la matrice passée en argument.
-*/
+//!
+//! \brief Opérateur = entre deux matrices pleines.
+//! \details Copie une matrice pleine dans une autre.
+//! \param m La matrice que l'on copie.
+//! \return La copie de la matrice passée en argument.
+//!
 
 MatPleine& MatPleine::operator=(MatPleine& m)
 {
@@ -136,14 +136,14 @@ MatPleine& MatPleine::operator=(MatPleine& m)
 	return *this;
 }
 
-/**
-* \brief Operateur + entre deux matrices pleines.
-* \details Effectue la somme de deux matrices pleines de même taille.
-* \param MP1 Première matrice de la somme.
-* \param MP2 Deuxième matrice de la somme.
-* \param M_temp Matrice temporaire contenant la somme des deux matrices.
-* \return Le Résultat de la somme contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur + entre deux matrices pleines.
+//! \details Effectue la somme de deux matrices pleines de même taille.
+//! \param MP1 Première matrice de la somme.
+//! \param MP2 Deuxième matrice de la somme.
+//! \param M_temp Matrice temporaire contenant la somme des deux matrices.
+//! \return Le Résultat de la somme contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator + (MatPleine& MP1, MatPleine& MP2)
 {
@@ -172,14 +172,14 @@ MatPleine& operator + (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur - entre deux matrices pleines.
-* \details Effectue la différence de deux matrices pleines de même taille.
-* \param MP1 Première matrice de la différence.
-* \param MP2 Deuxième matrice de la différence.
-* \param M_temp Matrice temporaire contenant la différence des deux matrices.
-* \return Le Résultat de la différence contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur - entre deux matrices pleines.
+//! \details Effectue la différence de deux matrices pleines de même taille.
+//! \param MP1 Première matrice de la différence.
+//! \param MP2 Deuxième matrice de la différence.
+//! \param M_temp Matrice temporaire contenant la différence des deux matrices.
+//! \return Le Résultat de la différence contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator - (MatPleine& MP1, MatPleine& MP2)
 {
@@ -208,14 +208,14 @@ MatPleine& operator - (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur * entre deux matrices pleines.
-* \details Effectue le produit de deux matrices pleines de même taille.
-* \param MP1 Première matrice du produit.
-* \param MP2 Deuxième matrice du produit.
-* \param M_temp Matrice temporaire contenant le produit des deux matrices.
-* \return Le Résultat du produit contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur * entre deux matrices pleines.
+//! \details Effectue le produit de deux matrices pleines de même taille.
+//! \param MP1 Première matrice du produit.
+//! \param MP2 Deuxième matrice du produit.
+//! \param M_temp Matrice temporaire contenant le produit des deux matrices.
+//! \return Le Résultat du produit contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator * (MatPleine& MP1, MatPleine& MP2)
 {
@@ -251,14 +251,14 @@ MatPleine& operator * (MatPleine& MP1, MatPleine& MP2)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur + entre une matrice pleine et un entier.
-* \details Effectue la somme d'une matrice pleine et d'un entier.
-* \param MP1 Matrice de la somme.
-* \param x Entier de la somme.
-* \param M_temp Matrice temporaire contenant la somme.
-* \return Le Résultat de la somme contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur + entre une matrice pleine et un entier.
+//! \details Effectue la somme d'une matrice pleine et d'un entier.
+//! \param MP1 Matrice de la somme.
+//! \param x Entier de la somme.
+//! \param M_temp Matrice temporaire contenant la somme.
+//! \return Le Résultat de la somme contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator + (MatPleine& MP1, double& x)
 {
@@ -276,14 +276,14 @@ MatPleine& operator + (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur - entre une matrice pleine et un entier.
-* \details Effectue la différence d'une matrice pleine et d'un entier.
-* \param MP1 Matrice de la différence.
-* \param x Entier de la différence.
-* \param M_temp Matrice temporaire contenant la différence.
-* \return Le Résultat de la différence contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur - entre une matrice pleine et un entier.
+//! \details Effectue la différence d'une matrice pleine et d'un entier.
+//! \param MP1 Matrice de la différence.
+//! \param x Entier de la différence.
+//! \param M_temp Matrice temporaire contenant la différence.
+//! \return Le Résultat de la différence contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator - (MatPleine& MP1, double& x)
 {
@@ -301,14 +301,14 @@ MatPleine& operator - (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur * entre une matrice pleine et un entier.
-* \details Effectue le produit d'une matrice pleine et d'un entier.
-* \param MP1 Matrice du produit.
-* \param x Entier du produit.
-* \param M_temp Matrice temporaire contenant le produit.
-* \return Le Résultat du produit contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur * entre une matrice pleine et un entier.
+//! \details Effectue le produit d'une matrice pleine et d'un entier.
+//! \param MP1 Matrice du produit.
+//! \param x Entier du produit.
+//! \param M_temp Matrice temporaire contenant le produit.
+//! \return Le Résultat du produit contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator * (MatPleine& MP1, double& x)
 {
@@ -326,14 +326,14 @@ MatPleine& operator * (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur / entre une matrice pleine et un entier.
-* \details Effectue le quotient d'une matrice pleine et d'un entier.
-* \param MP1 Matrice du quotient.
-* \param x Entier du quotient.
-* \param M_temp Matrice temporaire contenant le quotient.
-* \return Le Résultat du quotient contenu dans une matrice temporaire.
-*/
+//!
+//! \brief Operateur / entre une matrice pleine et un entier.
+//! \details Effectue le quotient d'une matrice pleine et d'un entier.
+//! \param MP1 Matrice du quotient.
+//! \param x Entier du quotient.
+//! \param M_temp Matrice temporaire contenant le quotient.
+//! \return Le Résultat du quotient contenu dans une matrice temporaire.
+//!
 
 MatPleine& operator / (MatPleine& MP1, double& x)
 {
@@ -351,12 +351,12 @@ MatPleine& operator / (MatPleine& MP1, double& x)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur = entre une matrice pleine et une matrice creuse.
-* \details Copie d'une matrice creuse dans une matrice pleine.
-* \param MC Matrice creuse.
-* \return La matrice pleine remplacé par le contenu de la matrice creuse.
-*/
+//!
+//! \brief Operateur = entre une matrice pleine et une matrice creuse.
+//! \details Copie d'une matrice creuse dans une matrice pleine.
+//! \param MC Matrice creuse.
+//! \return La matrice pleine remplacé par le contenu de la matrice creuse.
+//!
 
 MatPleine& MatPleine::operator=(MatCreuse& MC)
 {
@@ -377,36 +377,36 @@ MatPleine& MatPleine::operator=(MatCreuse& MC)
 	return *this;
 }
 
-/**
-* \brief Operateur + entre un entier et une matrice pleine.
-* \details Somme une matrice pleine et un entier.
-* \param MC Matrice pleine.
-* \return Le résultat de la somme.
-*/
+//!
+//! \brief Operateur + entre un entier et une matrice pleine.
+//! \details Somme une matrice pleine et un entier.
+//! \param MC Matrice pleine.
+//! \return Le résultat de la somme.
+//!
 
 MatPleine& operator+(double& x, MatPleine& MC)
 {
 	return MC+x;
 }
 
-/**
-* \brief Operateur - entre un entier et une matrice pleine.
-* \details Différence entre un matrice pleine et un entier.
-* \param MC Matrice pleine.
-* \return Le résultat de la différence.
-*/
+//!
+//! \brief Operateur - entre un entier et une matrice pleine.
+//! \details Différence entre un matrice pleine et un entier.
+//! \param MC Matrice pleine.
+//! \return Le résultat de la différence.
+//!
 
 MatPleine& operator-(double& x, MatPleine& MC)
 {
 	return MC-x;
 }
 
-/**
-* \brief Operateur * entre un entier et une matrice pleine.
-* \details Produit entre un matrice pleine et un entier.
-* \param MC Matrice pleine.
-* \return Le résultat du produit.
-*/
+//!
+//! \brief Operateur * entre un entier et une matrice pleine.
+//! \details Produit entre un matrice pleine et un entier.
+//! \param MC Matrice pleine.
+//! \return Le résultat du produit.
+//!
 
 MatPleine& operator*(double& x, MatPleine& MC)
 {
@@ -415,13 +415,13 @@ MatPleine& operator*(double& x, MatPleine& MC)
 
 // addition
 
-/**
-* \brief Operateur + entre une matrice pleine et une matrice creuse.
-* \details Effectue la somme d'une matrice pleine et d'une matrice creuse.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return Une matrice temporaire contenant la somme des deux matrices.
-*/
+//!
+//! \brief Operateur + entre une matrice pleine et une matrice creuse.
+//! \details Effectue la somme d'une matrice pleine et d'une matrice creuse.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return Une matrice temporaire contenant la somme des deux matrices.
+//!
 
 MatPleine& operator + (MatPleine& MP, MatCreuse& MC)
 {
@@ -449,13 +449,13 @@ MatPleine& operator + (MatPleine& MP, MatCreuse& MC)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur + entre une matrice creuse et une matrice pleine.
-* \details Renvoie la somme d'une matrice pleine et d'une matrice creuse.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return La somme d'une matrice pleine et d'une matrice creuse.
-*/
+//!
+//! \brief Operateur + entre une matrice creuse et une matrice pleine.
+//! \details Renvoie la somme d'une matrice pleine et d'une matrice creuse.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return La somme d'une matrice pleine et d'une matrice creuse.
+//!
 
 MatPleine& operator + (MatCreuse& MC, MatPleine& MP)
 {
@@ -466,13 +466,13 @@ MatPleine& operator + (MatCreuse& MC, MatPleine& MP)
 
 // soustraction
 
-/**
-* \brief Operateur - entre une matrice pleine et une matrice creuse.
-* \details Effectue la différence entre une matrice pleine et une matrice creuse.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return Une matrice temporaire contenant la différence entre les deux matrices.
-*/
+//!
+//! \brief Operateur - entre une matrice pleine et une matrice creuse.
+//! \details Effectue la différence entre une matrice pleine et une matrice creuse.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return Une matrice temporaire contenant la différence entre les deux matrices.
+//!
 
 MatPleine& operator - (MatPleine& MP, MatCreuse& MC)
 {
@@ -500,13 +500,13 @@ MatPleine& operator - (MatPleine& MP, MatCreuse& MC)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur - entre une matrice creuse et une matrice pleine.
-* \details Effectue la différence entre une matrice creuse et d'une matrice pleine.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return Une matrice temporaire contenant la différence entre les deux matrices.
-*/
+//!
+//! \brief Operateur - entre une matrice creuse et une matrice pleine.
+//! \details Effectue la différence entre une matrice creuse et d'une matrice pleine.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return Une matrice temporaire contenant la différence entre les deux matrices.
+//!
 
 MatPleine& operator - (MatCreuse& MC, MatPleine& MP)
 {
@@ -538,13 +538,13 @@ MatPleine& operator - (MatCreuse& MC, MatPleine& MP)
 
 // multiplication
 
-/**
-* \brief Operateur * entre une matrice pleine et une matrice creuse.
-* \details Effectue le produit d'une matrice pleine et d'une matrice creuse.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return Une matrice temporaire contenant le produit des deux matrices.
-*/
+//!
+//! \brief Operateur * entre une matrice pleine et une matrice creuse.
+//! \details Effectue le produit d'une matrice pleine et d'une matrice creuse.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return Une matrice temporaire contenant le produit des deux matrices.
+//!
 
 MatPleine& operator * (MatPleine& MP, MatCreuse& MC)
 {
@@ -580,13 +580,13 @@ MatPleine& operator * (MatPleine& MP, MatCreuse& MC)
 	return *M_temp;
 }
 
-/**
-* \brief Operateur * entre une matrice creuse et une matrice pleine.
-* \details Effectue le produit d'une matrice creuse et d'une matrice pleine.
-* \param MP Matrice pleine.
-* \param MC Matrice creuse
-* \return Une matrice temporaire contenant le produit des deux matrices.
-*/
+//!
+//! \brief Operateur * entre une matrice creuse et une matrice pleine.
+//! \details Effectue le produit d'une matrice creuse et d'une matrice pleine.
+//! \param MP Matrice pleine.
+//! \param MC Matrice creuse
+//! \return Une matrice temporaire contenant le produit des deux matrices.
+//!
 
 MatPleine& operator * (MatCreuse& MC, MatPleine& MP)
 {
@@ -625,11 +625,11 @@ MatPleine& operator * (MatCreuse& MC, MatPleine& MP)
 
 //_______________FIN OPERATEURS________________
 
-/**
-* \brief Sauvegarde une matrice pleine.
-* \details Sauvegarde une matrice pleine dans un fichier dont on donne le nom
-* \	   et qui est placé dans le dossier sauvegardes.
-*/
+//!
+//! \brief Sauvegarde une matrice pleine.
+//! \details Sauvegarde une matrice pleine dans un fichier dont on donne le nom
+//! \	   et qui est placé dans le dossier sauvegardes.
+//!
 
 void MatPleine::Sauvegarde()
 {
@@ -654,12 +654,12 @@ void MatPleine::Sauvegarde()
     cout<<"fin"<<endl;
 }
 
-/**
-* \brief Compteur du nombre de cases non nulles d'une matrice pleine.
-* \details Comptes le nombre de cases non nulle d'une matrice pleine en la parcourant.
-* \param somme Sert de compteur.
-* \return somme.
-*/
+//!
+//! \brief Compteur du nombre de cases non nulles d'une matrice pleine.
+//! \details Comptes le nombre de cases non nulle d'une matrice pleine en la parcourant.
+//! \param somme Sert de compteur.
+//! \return somme.
+//!
 
 int MatPleine::Total_Cases()
 {
@@ -675,11 +675,11 @@ int MatPleine::Total_Cases()
 	return somme;
 }
 
-/**
-* \brief Charger une matrice pleine.
-* \details Effectue le chargement d'une matrice contenue dans un fichier pour la copier dans une matrice pleine.
-* \param fichier Le fichier en cours de chargement.
-*/
+//!
+//! \brief Charger une matrice pleine.
+//! \details Effectue le chargement d'une matrice contenue dans un fichier pour la copier dans une matrice pleine.
+//! \param fichier Le fichier en cours de chargement.
+//!
 
 void MatPleine::Charger(fstream& fichier, int nbl, int nbc)
 {
@@ -703,11 +703,11 @@ void MatPleine::Charger(fstream& fichier, int nbl, int nbc)
 
 }
 
-/**
-* \brief Génère aléatoirement le contenu d'une matrice pleine.
-* \details Remplit une matrice pleine de manière aléatoire.
-* \return La matrice temporaire qui a été remplie est retournée.
-*/
+//!
+//! \brief Génère aléatoirement le contenu d'une matrice pleine.
+//! \details Remplit une matrice pleine de manière aléatoire.
+//! \return La matrice temporaire qui a été remplie est retournée.
+//!
 
 MatPleine& MatPleine::Generateur_Aleat()
 {
@@ -732,11 +732,11 @@ MatPleine& MatPleine::Generateur_Aleat()
 	return *M_temp;
 }
 
-/**
-* \brief Transposé d'une matrice pleine.
-* \details Effectue la transposé d'une matrice pleine.
-* \return Une matrice temporaire contenant la transposé.
-*/
+//!
+//! \brief Transposé d'une matrice pleine.
+//! \details Effectue la transposé d'une matrice pleine.
+//! \return Une matrice temporaire contenant la transposé.
+//!
 
 MatPleine& MatPleine::Transpose()
 {
