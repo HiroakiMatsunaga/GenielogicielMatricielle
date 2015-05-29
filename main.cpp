@@ -1,3 +1,12 @@
+//!
+//! \file main.cpp
+//! \author GELOCRRG
+//! \version 1.0
+//! \date 28 mai 2015
+//! \brief Utilisation des matrices.
+//! \details C'est ici que l'on décide des manipulations à effectuer sur les matrices
+//!
+
 #include <iostream>
 #include <cmath>
 #include "Matrice.h"
