@@ -1,11 +1,11 @@
-/**
- * \file          MatCreuse.cpp
- * \author      GELOCRRG
- * \version   1.0
- * \date       20 mai 2015
- * \brief       Gère l'utilisation des matrices creuses.
- * \details    Cette classe
- */
+//!
+ //! \file          MatCreuse.cpp
+ //! \author      GELOCRRG
+ //! \version   1.0
+ //! \date       20 mai 2015
+ //! \brief       Gère l'utilisation des matrices creuses.
+ //! \details    Cette classe
+ //!
 
 #include <iostream>
 #include <cmath>
@@ -18,13 +18,12 @@ using namespace std;
 /*_______________________________________ CONSTRUCTION _____________________________________*/
 
 
-/**
- * \brief       "Ce que la fonction fait"
- * \details    "Comment elle le fait"
- * \param    "Nom du paramètre"  "Utilité"
- * \param    "De même pour chaque paramètre de la fonction"
- * \return    "Ce qui est retourné"
- */
+//!
+//! \brief Affectation des valeurs des cases creuses.
+//! \param valeur Valeur entrée dans la matrice.
+//! \param numligne Coordonnée de la valeur.
+//! \param numcolonne Coordonnée de la valeur.
+//!
  
 CaseCreuse* Nb_C(double valeur, int numligne, int numcolonne)
 {
@@ -39,13 +38,12 @@ CaseCreuse* Nb_C(double valeur, int numligne, int numcolonne)
     return cr;
 }
 
-/**
- * \brief       "Ce que la fonction fait"
- * \details    "Comment elle le fait"
- * \param    "Nom du paramètre"  "Utilité"
- * \param    "De même pour chaque paramètre de la fonction"
- * \return    "Ce qui est retourné"
- */
+//!
+//! \brief Création d'une nouvelle matrice creuse.
+//! \details Création d'une matrice creuse avec les dimensions en arguments
+//! \param tailleligne Nombre de lignes de la matrice creuse.
+//! \param taillecolonne Nombre de colonne de la matrice creuse.
+//!
 
 void MatCreuse::NM(int tailleligne, int taillecolonne)
 {
@@ -62,6 +60,12 @@ void MatCreuse::NM(int tailleligne, int taillecolonne)
         Col[j]=NULL;
     }
 } 
+
+//!
+//! \brief Constructeur.
+//! \details Création d'une matrice creuse initialisé sans valeurs.
+//!
+
 MatCreuse::MatCreuse()
 {
     nb_l=0;
@@ -69,10 +73,24 @@ MatCreuse::MatCreuse()
     Lig=NULL;
     Col=NULL;
 }
+
+//!
+//! \brief Constructeur.
+//! \details Création d'une matrice creuse avec les dimensions en arguments
+//! \param tailleligne Nombre de lignes de la matrice creuse.
+//! \param taillecolonne Nombre de colonne de la matrice creuse.
+//!
+
 MatCreuse::MatCreuse(int tailleligne, int taillecolonne)
 {
     if(tailleligne != 0 && taillecolonne != 0) NM(tailleligne,taillecolonne);
 }
+
+//!
+//! \brief Constructeur.
+//! \details Constructeur par recopie.
+//! \param M Matrice creuse copiée.
+//!
 
 MatCreuse::MatCreuse(const MatCreuse &M)
 {
@@ -93,12 +111,20 @@ MatCreuse::MatCreuse(const MatCreuse &M)
     }
 }
 
+//!
+//! \brief Destructeur.
+//! \details Destructeur de matrice creuse.
+//!
 
 MatCreuse::~MatCreuse()
 {
     Destruction();
 }
 
+//!
+//! \brief Destruction de matrices creuses.
+//! \details Appelée par le destructeur pour remplacer les valeurs par 0 et détruire les tableaux.
+//!
 
 void MatCreuse::Destruction()
 {
@@ -117,6 +143,10 @@ void MatCreuse::Destruction()
 
 /*_______________________________________ DIVERS _____________________________________*/
 
+//!
+//! \brief Affichage.
+//! \details Affiche une matrice creuse.
+//!
 
 void MatCreuse::Afficher()
 {
@@ -155,6 +185,13 @@ void MatCreuse::Afficher()
 
 }
 
+//!
+//! \brief Génèrateur de cases creuses.
+//! \details Génère des cases creuses si possible et les renvoie.
+//! \param temp Case creuse générée temporairement.
+//! \return Retourne temp si la case creuse a été créée et 0 sinon.
+//!
+
 double MatCreuse::Valeur(int i, int j)
 {
     if(Lig[i] == NULL || Col[j] == NULL)
@@ -169,6 +206,11 @@ double MatCreuse::Valeur(int i, int j)
     return 0;
 }
 
+//!
+//! \brief Insertion de valeurs dans la matrice creuse.
+//! \details Génère une case creuse de valeur v et l'insère dans la matrice creuse.
+//! \param v Valeur de la case creuse.
+//!
 
 void MatCreuse::Insertion(int i, int j, double v)
 {
@@ -278,6 +320,12 @@ void MatCreuse::Insertion(int i, int j, double v)
 
 /*_______________________________________ OPERATEURS _____________________________________*/
 
+//!
+//! \brief Opérateur = .
+//! \details Création d'une matrice creuse avec les dimensions en arguments
+//! \param tailleligne Nombre de lignes de la matrice creuse.
+//! \param taillecolonne Nombre de colonne de la matrice creuse.
+//!
 
 MatCreuse& MatCreuse::operator=(MatCreuse& MC)
 {
