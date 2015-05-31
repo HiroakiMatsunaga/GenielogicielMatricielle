@@ -1,15 +1,22 @@
-CC = g++
-CFLAGS = -Wall 
-EXEC_NAME = Matrice
-INCLUDES =
-LIBS = 
-OBJ_FILES = main.cpp MatCreuse.o MatPleine.o Matrice.o
-INSTALL_DIR = 
-all : $(EXEC_NAME)
-# clean :
-# 	rm $(EXEC_NAME) $(OBJ_FILES)
-$(EXEC_NAME) : $(OBJ_FILES)
-	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) $(LIBS)
-%.o: %.cpp %.h
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+All: main
 
+main: main.o Matrice.o MatPleine.o MatCreuse.o
+g++ -o main main.o Matrice.o MatPleine.o MatCreuse.o
+
+main.o: main.cpp Matrice.h MatPleine.h
+g++ -c main.cpp
+
+Matrice.o: Matrice.cpp Matrice.h MatCreuse.h MatPleine.h
+g++ -c Matrice.cpp
+
+MatCreuse.o: MatCreuse.cpp MatCreuse.h MatPleine.h
+g++ -c MatCreuse.cpp
+
+MatPleine.o: MatPleine.cpp MatPleine.h MatCreuse.h
+g++ -c MatPleine.cpp
+
+clean:
+rm -f *.o
+
+mrproper: clean
+rm -f main
